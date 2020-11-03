@@ -2,7 +2,7 @@ import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
 
 class ListaZonasGeograficasScreen extends StatelessWidget {
-  final listaZonas = ['Pirineos', 'Cuenca de Pamplona', 'Zona Media', 'Ribera'];
+  // final listaZonas = ['Pirineos', 'Cuenca de Pamplona', 'Zona Media', 'Ribera'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,28 +17,25 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
     return FutureBuilder(
       future: menuProvider.cargarZona(),
       initialData: [],
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
+      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) { 
           return ListView(
-            children: _listaZonas(),
+            children: _listaZonas(snapshot.data),
           );
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
       },
     );
   }
 
 
-  List<Widget> _listaZonas() {
-    List<Widget> lst = [];
-    listaZonas.forEach((zona) {
-      final tile = new ListTile(
-        title: Text(zona),
+  List<Widget> _listaZonas(List<dynamic> data) {
+    final List<Widget> opciones = [];
+    data.forEach((opt) {
+      final widgetTemp = ListTile(
+        title: Text(opt["Descripcion Zona"]),
+        onTap: () {},
       );
-      lst.add(tile);
-      lst.add(Divider());
+      opciones..add(widgetTemp)
+              ..add(Divider());
     });
-    return lst;
+    return opciones;
   }
 }
