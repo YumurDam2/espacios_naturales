@@ -1,3 +1,4 @@
+import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:flutter/material.dart';
 
 class ListaZonasGeograficasScreen extends StatelessWidget {
@@ -8,11 +9,26 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("Zonas Geográficas"),
       ),
-      body: ListView(
-        children: _listaZonas(),
-      ),
+      body: _lista(),
+      );
+  }
+
+  Widget _lista() {
+    return FutureBuilder(
+      future: menuProvider.cargarZona(),
+      initialData: [],
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return ListView(
+            children: _listaZonas(),
+          );
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
+      },
     );
   }
+
 
   List<Widget> _listaZonas() {
     List<Widget> lst = [];
