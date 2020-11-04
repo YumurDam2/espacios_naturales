@@ -7,7 +7,7 @@ class PresentacionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new SplashScreen(
-        seconds: 10,
+        seconds: 3,
         navigateAfterSeconds: ListaZonasGeograficasScreen(),
         title: new Text(
           'Espacios Naturales',

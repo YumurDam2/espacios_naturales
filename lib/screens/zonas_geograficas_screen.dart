@@ -8,34 +8,60 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Zonas Geográficas"),
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
       ),
-      body: _lista(),
+      body: _lista(context),
       );
   }
 
-  Widget _lista() {
+  Widget _lista(BuildContext context) {
     return FutureBuilder(
-      future: menuProvider.cargarZona(),
+      future: menuProvider.cargarZonas(),
       initialData: [],
-      builder: (context, AsyncSnapshot<List<dynamic>> snapshot) { 
+      builder: (context, snapshot) { 
           return ListView(
-            children: _listaZonas(snapshot.data),
+            children: _listaZonas(context, snapshot.data),
           );
       },
     );
   }
 
 
-  List<Widget> _listaZonas(List<dynamic> data) {
-    final List<Widget> opciones = [];
-    data.forEach((opt) {
-      final widgetTemp = ListTile(
-        title: Text(opt["Descripcion Zona"]),
-        onTap: () {},
+  List<Widget> _listaZonas(BuildContext context, List<String> data) {
+  //   final List<Widget> opciones = [];
+  //   data.forEach((opt) {
+  //     final widgetTemp = ListTile(
+  //       title: Text(opt["Descripcion Zona"]),
+  //       onTap: () {},
+  //     );
+  //     opciones..add(widgetTemp)
+  //             ..add(Divider());
+  //   });
+  //   return opciones;
+  // }
+     final List<Widget> lst = [];
+     
+    data.forEach((element) {
+      final w = ListTile(
+        title: Text(element),
+        leading: new Image.network(
+            'https://www.bcn.cl/siit/siit/imagenes/mountains-1.png'),
+        trailing: Icon(Icons.keyboard_arrow_right, color: Colors.green,),
+        onTap: () {
+          
+          
+        },
       );
-      opciones..add(widgetTemp)
-              ..add(Divider());
+      lst.add(w);
+      lst.add(Divider(
+        height: 100,
+        thickness: 2,
+        indent: 100,
+        endIndent: 100,
+        color: Colors.green,
+      ));
     });
-    return opciones;
+    return lst;
   }
 }
