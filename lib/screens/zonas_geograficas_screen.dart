@@ -1,8 +1,10 @@
 import 'package:espacios_naturales/providers/menu_provider.dart';
+import 'package:espacios_naturales/screens/tipos_espacios_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ListaZonasGeograficasScreen extends StatelessWidget {
-  // final listaZonas = ['Pirineos', 'Cuenca de Pamplona', 'Zona Media', 'Ribera'];
+  Map<String, Object> args = new Map<String, Object>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,45 +14,36 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
         backgroundColor: Colors.lightGreen,
       ),
       body: _lista(context),
-      );
+    );
   }
 
   Widget _lista(BuildContext context) {
     return FutureBuilder(
       future: menuProvider.cargarZonas(),
       initialData: [],
-      builder: (context, snapshot) { 
-          return ListView(
-            children: _listaZonas(context, snapshot.data),
-          );
+      builder: (context, snapshot) {
+        return ListView(
+          children: _listaZonas(context, snapshot.data),
+        );
       },
     );
   }
 
-
   List<Widget> _listaZonas(BuildContext context, List<String> data) {
-  //   final List<Widget> opciones = [];
-  //   data.forEach((opt) {
-  //     final widgetTemp = ListTile(
-  //       title: Text(opt["Descripcion Zona"]),
-  //       onTap: () {},
-  //     );
-  //     opciones..add(widgetTemp)
-  //             ..add(Divider());
-  //   });
-  //   return opciones;
-  // }
-     final List<Widget> lst = [];
-     
+    final List<Widget> lst = [];
+
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
         leading: new Image.network(
-            'https://www.bcn.cl/siit/siit/imagenes/mountains-1.png'),
-        trailing: Icon(Icons.keyboard_arrow_right, color: Colors.green,),
+            'https://www.bcn.cl/siit/siit/imagenes/mountains-1.png%27),
+        trailing: Icon(
+          Icons.arrow_right,
+          color: Colors.green,
+        ),
         onTap: () {
-          
-          
+          args['descripZona'] = element;
+          Get.offAll(ListaTiposEspaciosNaturalesScreen(), arguments: args);
         },
       );
       lst.add(w);
