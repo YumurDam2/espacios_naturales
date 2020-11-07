@@ -1,6 +1,6 @@
+import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:espacios_naturales/screens/tipos_espacios_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:get/get.dart';
 
 class ListaZonasGeograficasScreen extends StatelessWidget {
@@ -35,19 +35,20 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
-        leading: new Icon(Icons.eco_outlined, color: Colors.green),
+        leading: new Image.network(
+            'https://www.bcn.cl/siit/siit/imagenes/mountains-1.png%27),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.green,
         ),
         onTap: () {
-          args['zona'] = element;
-          Get.offAll((ListaTiposEspaciosNaturalesScreen()), arguments: args);
+          args['descripZona'] = element;
+          Get.offAll(ListaTiposEspaciosNaturalesScreen(), arguments: args);
         },
       );
       lst.add(w);
       lst.add(Divider(
-        height: 50,
+        height: 100,
         thickness: 2,
         indent: 100,
         endIndent: 100,
