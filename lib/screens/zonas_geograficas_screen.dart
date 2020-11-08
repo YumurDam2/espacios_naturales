@@ -1,5 +1,5 @@
 import 'package:espacios_naturales/providers/menu_provider.dart';
-import 'package:espacios_naturales/screens/tipos_espacios_screen.dart';
+import 'package:espacios_naturales/screens/tipos_espacios_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -36,7 +36,7 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
       final w = ListTile(
         title: Text(element),
         leading: new Image.network(
-            'https://www.bcn.cl/siit/siit/imagenes/mountains-1.png%27),
+            'https://www.bcn.cl/siit/siit/imagenes/mountains-1.png%27'),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.green,

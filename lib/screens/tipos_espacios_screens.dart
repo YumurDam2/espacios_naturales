@@ -1,9 +1,8 @@
-import 'package:espacios_naturales/screens/tipos_espacios_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:get/get.dart';
 
-class ListaZonasGeograficasScreen extends StatelessWidget {
+class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
   @override
   Widget build(BuildContext context) {
