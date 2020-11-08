@@ -12,8 +12,8 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     box.write('descripZona', null);
-    box.write('TIPO', null);
-    box.write('Nombre', null);
+    box.write('tipo', null);
+    box.write('nombre', null);
     return Scaffold(
       appBar: AppBar(
         title: Text("Zonas Geográficas"),
@@ -46,9 +46,7 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
-
         leading: Icon(Icons.nature),
-
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.black45,
@@ -61,10 +59,9 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
       );
       lst.add(w);
       lst.add(Divider(
-        height: 100,
-        thickness: 2,       
-        color: Colors.green,
-
+        height: 80,
+        thickness: 1,
+        color: Colors.black,
       ));
     });
     return lst;
