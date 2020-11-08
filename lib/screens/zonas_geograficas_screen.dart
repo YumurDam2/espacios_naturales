@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 
 class ListaZonasGeograficasScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,21 +23,24 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
       future: menuProvider.cargarZonas(),
       initialData: [],
       builder: (context, snapshot) {
-        return ListView(
-          children: _listaZonas(context, snapshot.data),
-        );
+        if (snapshot.connectionState == ConnectionState.done) {
+          return ListView(
+            children: _listaZonas(context, snapshot.data),
+          );
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
       },
     );
   }
 
-  List<Widget> _listaZonas(BuildContext context, List<String> data) {
+  List<Widget> _listaZonas(BuildContext context, List<dynamic> data) {
     final List<Widget> lst = [];
 
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
-        leading: new Image.network(
-            'https://www.bcn.cl/siit/siit/imagenes/mountains-1.png%27'),
+        leading: Icon(Icons.nature),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.green,
