@@ -46,7 +46,7 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
-        leading: Icon(Icons.nature),
+        leading: Icon(Icons.nature_people),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.black45,
