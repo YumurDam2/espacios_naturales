@@ -1,9 +1,13 @@
+
+import 'package:espacios_naturales/screens/tipo_seleccionado_screen.dart';
+import 'package:espacios_naturales/screens/zonas_geograficas_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:get/get.dart';
 
 class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,12 +17,20 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
         backgroundColor: Colors.lightGreen,
       ),
       body: _lista(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.offAll(ListaZonasGeograficasScreen(), arguments: args);
+        },
+        child: Icon(Icons.arrow_back),
+        backgroundColor: Colors.green,
+      ),
     );
   }
 
   Widget _lista(BuildContext context) {
+    args = Get.arguments;
     return FutureBuilder(
-      future: menuProvider.cargarTipos(),
+      future: menuProvider.cargarTipos(args['descripZona']),
       initialData: [],
       builder: (context, snapshot) {
         return ListView(
@@ -28,7 +40,7 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> _listaZonas(BuildContext context, List<String> data) {
+  List<Widget> _listaZonas(BuildContext context, List<dynamic> data) {
     final List<Widget> lst = [];
 
     data.forEach((element) {
@@ -40,8 +52,9 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
           color: Colors.green,
         ),
         onTap: () {
-          args['zona'] = element;
-          //Get.offAll(, arguments: args);
+          args['tipo'] = element;
+          Get.offAll(ListaTipoEspacioNaturalSeleccionadoScreen(),
+              arguments: args);
         },
       );
       lst.add(w);
