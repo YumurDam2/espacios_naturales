@@ -8,6 +8,7 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
   final box = GetStorage();
 
   Map<String, Object> args = new Map<String, Object>();
+
   @override
   Widget build(BuildContext context) {
     box.write('descripZona', null);
@@ -28,9 +29,13 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
       future: menuProvider.cargarZonas(),
       initialData: [],
       builder: (context, snapshot) {
-        return ListView(
-          children: _listaZonas(context, snapshot.data),
-        );
+        if (snapshot.connectionState == ConnectionState.done) {
+          return ListView(
+            children: _listaZonas(context, snapshot.data),
+          );
+        } else {
+          return Center(child: CircularProgressIndicator());
+        }
       },
     );
   }
@@ -41,8 +46,9 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
-        leading: new Image.network(
-            'https://www.bcn.cl/siit/siit/imagenes/mountains-1.png%27'),
+
+        leading: Icon(Icons.nature),
+
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.black45,
@@ -56,8 +62,9 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
       lst.add(w);
       lst.add(Divider(
         height: 100,
-        thickness: 2,
-        color: Colors.black45,
+        thickness: 2,       
+        color: Colors.green,
+
       ));
     });
     return lst;
