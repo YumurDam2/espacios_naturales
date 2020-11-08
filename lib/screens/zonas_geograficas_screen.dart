@@ -40,7 +40,9 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
+
         leading: Icon(Icons.nature),
+
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.green,
@@ -54,8 +56,7 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
       lst.add(Divider(
         height: 100,
         thickness: 2,
-        indent: 100,
-        endIndent: 100,
+        
         color: Colors.green,
       ));
     });
