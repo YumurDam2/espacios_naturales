@@ -7,6 +7,7 @@ class MenuProvider {
   List<String> listaAreas = [];
   List<String> listaTipos = [];
   List<String> listaTipoSeleccionado = [];
+
   List<EspaciosNaturales> listaPuntos = [];
 
   Future<List<EspaciosNaturales>> cargarPuntos() async {
@@ -42,7 +43,7 @@ class MenuProvider {
       if ((zona == pr.descripZona) &&
           (listaTipos.indexOf(pr.tipo) < 0) &&
           pr.tipo != "") {
-        listaTipos.add(pr.descripZona);
+        listaTipos.add(pr.tipo);
       }
     });
     return listaTipos;
