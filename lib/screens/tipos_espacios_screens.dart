@@ -1,4 +1,3 @@
-
 import 'package:espacios_naturales/screens/tipo_seleccionado_screen.dart';
 import 'package:espacios_naturales/screens/zonas_geograficas_screen.dart';
 import 'package:flutter/material.dart';
@@ -37,9 +36,6 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     return FutureBuilder(
       future: menuProvider
           .cargarTipos(box.read('descripZona') ?? args['descripZona']),
-
-   
-
       initialData: [],
       builder: (context, snapshot) {
         return ListView(
@@ -60,21 +56,19 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
           color: Colors.green,
         ),
         onTap: () {
-
           box.write('tipo', element);
           args['tipo'] = element;
           //Get.offAll(, arguments: args);
 
           Get.offAll(ListaTipoEspacioNaturalSeleccionadoScreen(),
               arguments: args);
-
         },
       );
       lst.add(w);
       lst.add(Divider(
-        height: 50,
-        thickness: 2,
-        color: Colors.black45,
+        height: 15,
+        thickness: 1,
+        color: Colors.black,
       ));
     });
     return lst;
