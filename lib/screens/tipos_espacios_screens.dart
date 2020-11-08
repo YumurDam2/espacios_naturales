@@ -4,15 +4,20 @@ import 'package:espacios_naturales/screens/zonas_geograficas_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
 
+  final box = GetStorage();
+
   @override
   Widget build(BuildContext context) {
+    box.write('tipo', null);
+    box.write('nombre', null);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Zonas Geográficas"),
+        title: Text("Tipos Espacios Naturales"),
         centerTitle: true,
         backgroundColor: Colors.lightGreen,
       ),
@@ -30,7 +35,11 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
   Widget _lista(BuildContext context) {
     args = Get.arguments;
     return FutureBuilder(
-      future: menuProvider.cargarTipos(args['descripZona']),
+      future: menuProvider
+          .cargarTipos(box.read('descripZona') ?? args['descripZona']),
+
+   
+
       initialData: [],
       builder: (context, snapshot) {
         return ListView(
@@ -46,24 +55,26 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
-        leading: new Icon(Icons.eco_outlined, color: Colors.green),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.green,
         ),
         onTap: () {
+
+          box.write('tipo', element);
           args['tipo'] = element;
+          //Get.offAll(, arguments: args);
+
           Get.offAll(ListaTipoEspacioNaturalSeleccionadoScreen(),
               arguments: args);
+
         },
       );
       lst.add(w);
       lst.add(Divider(
         height: 50,
         thickness: 2,
-        indent: 100,
-        endIndent: 100,
-        color: Colors.green,
+        color: Colors.black45,
       ));
     });
     return lst;
