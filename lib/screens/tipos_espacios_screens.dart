@@ -9,10 +9,9 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    args = Get.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tipos Espacios Naturales"),
+        title: Text("Zonas Geográficas"),
         centerTitle: true,
         backgroundColor: Colors.lightGreen,
       ),
@@ -33,13 +32,9 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
       future: menuProvider.cargarTipos(args['descripZona']),
       initialData: [],
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return ListView(
-            children: _listaZonas(context, snapshot.data),
-          );
-        } else {
-          return Center(child: CircularProgressIndicator());
-        }
+        return ListView(
+          children: _listaZonas(context, snapshot.data),
+        );
       },
     );
   }
@@ -50,7 +45,7 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
-        leading: new Icon(Icons.eco, color: Colors.green),
+        leading: new Icon(Icons.eco_outlined, color: Colors.green),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.green,
