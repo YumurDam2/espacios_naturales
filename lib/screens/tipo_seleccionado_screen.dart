@@ -21,7 +21,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
           Get.offAll(ListaTiposEspaciosNaturalesScreen(), arguments: args);
         },
         child: Icon(Icons.arrow_back),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.black45,
       ),
     );
   }
@@ -51,10 +51,10 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
         title: Text(element),
         trailing: Icon(
           Icons.arrow_right,
-          color: Colors.green,
+          color: Colors.black45,
         ),
         onTap: () {
-          args['tipo'] = element;
+          args['nombre'] = element;
           //Get.offAll(, arguments: args);
         },
       );
@@ -62,7 +62,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
       lst.add(Divider(
         height: 20,
         thickness: 1,
-        color: Colors.black,
+        color: Colors.black45,
       ));
     });
     return lst;

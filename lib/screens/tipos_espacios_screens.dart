@@ -26,7 +26,7 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
           Get.offAll(ListaZonasGeograficasScreen(), arguments: args);
         },
         child: Icon(Icons.arrow_back),
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.black45,
       ),
     );
   }
@@ -53,7 +53,7 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
         title: Text(element),
         trailing: Icon(
           Icons.arrow_right,
-          color: Colors.green,
+          color: Colors.black45,
         ),
         onTap: () {
           box.write('tipo', element);
