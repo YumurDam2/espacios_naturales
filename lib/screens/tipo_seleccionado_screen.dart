@@ -11,7 +11,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
     args = Get.arguments;
     return Scaffold(
       appBar: AppBar(
-        title: Text("Nombres Espacios Naturales"),
+        title: Text(args['tipo']),
         centerTitle: true,
         backgroundColor: Colors.lightGreen,
       ),
@@ -49,6 +49,8 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
+        // leading: Icon(Icons.eco),
+        subtitle: Text(args['descripZona']),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.black45,

@@ -51,6 +51,8 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     data.forEach((element) {
       final w = ListTile(
         title: Text(element),
+        // leading: Icon(Icons.nature),
+        subtitle: Text(box.read('descripZona')),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.black45,
