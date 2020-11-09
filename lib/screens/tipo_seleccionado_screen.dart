@@ -10,6 +10,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     args = Get.arguments;
+    String tipo = args['tipo'];
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -21,8 +22,13 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
             backgroundColor: Colors.lightGreen,
             iconTheme: IconThemeData(color: Colors.purple),
             flexibleSpace: FlexibleSpaceBar(
-              title:
-                  Text(args['tipo'], style: TextStyle(fontFamily: 'Verdana')),
+              title: Text(
+                tipo.toUpperCase(),
+                style: TextStyle(
+                  fontWeight: FontWeight.w300, // light
+                  fontStyle: FontStyle.italic, // italic
+                ),
+              ),
               centerTitle: true,
               background: Image(
                 image: AssetImage('assets/images/portada.png'),
@@ -70,13 +76,20 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
       final w = ListTile(
         title: Text(
           element.nombre.toUpperCase(),
-          style: TextStyle(fontFamily: 'Verdana'),
+          style: TextStyle(
+            fontWeight: FontWeight.w300, // light
+            fontStyle: FontStyle.italic, // italic
+          ),
           textAlign: TextAlign.center,
         ),
         // leading: Icon(Icons.eco),
         subtitle: Text(
           tipo.toUpperCase(),
           textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.w300, // light
+            fontStyle: FontStyle.italic, // italic
+          ),
         ),
         trailing: Icon(
           Icons.arrow_right,

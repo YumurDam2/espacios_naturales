@@ -25,8 +25,13 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
             backgroundColor: Colors.lightGreen,
             iconTheme: IconThemeData(color: Colors.purple),
             flexibleSpace: FlexibleSpaceBar(
-              title: Text("TIPOS ESPACIOS NATURALES",
-                  style: TextStyle(fontFamily: 'Verdana')),
+              title: Text(
+                "TIPOS ESPACIOS NATURALES",
+                style: TextStyle(
+                  fontWeight: FontWeight.w300, // light
+                  fontStyle: FontStyle.italic, // italic
+                ),
+              ),
               centerTitle: true,
               background: Image(
                 image: AssetImage('assets/images/portada.png'),
@@ -70,13 +75,20 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
       final w = ListTile(
         title: Text(
           element.toUpperCase(),
-          style: TextStyle(fontFamily: 'Verdana'),
+          style: TextStyle(
+            fontWeight: FontWeight.w300, // light
+            fontStyle: FontStyle.italic, // italic
+          ),
           textAlign: TextAlign.center,
         ),
         // leading: Icon(Icons.nature),
         subtitle: Text(
           box.read('descripZona').toUpperCase(),
           textAlign: TextAlign.center,
+          style: TextStyle(
+            fontWeight: FontWeight.w300, // light
+            fontStyle: FontStyle.italic, // italic
+          ),
         ),
         trailing: Icon(
           Icons.arrow_right,

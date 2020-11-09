@@ -11,14 +11,23 @@ class PresentacionScreen extends StatelessWidget {
         navigateAfterSeconds: ListaZonasGeograficasScreen(),
         title: new Text(
           'Espacios Naturales',
-          style: new TextStyle(fontStyle: FontStyle.italic, fontSize: 30.0),
+          style: new TextStyle(
+              fontStyle: FontStyle.italic,
+              fontSize: 30.0,
+              fontWeight: FontWeight.w300),
         ),
         image: Image(image: AssetImage('assets/images/logo_turismo.jpg')),
         backgroundColor: Colors.white,
         styleTextUnderTheLoader: new TextStyle(),
         photoSize: 120.0,
         onClick: () => print("Flutter Spain"),
-        loadingText: Text("Embarcando..."),
+        loadingText: Text(
+          "Embarcando...",
+          style: TextStyle(
+            fontWeight: FontWeight.w300, // light
+            fontStyle: FontStyle.italic, // italic
+          ),
+        ),
         loaderColor: Colors.red);
   }
 }

@@ -25,8 +25,13 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
             backgroundColor: Colors.lightGreen,
             iconTheme: IconThemeData(color: Colors.purple),
             flexibleSpace: FlexibleSpaceBar(
-              title: Text("ZONAS GEOGRÁFICAS",
-                  style: TextStyle(fontFamily: 'Verdana')),
+              title: Text(
+                "ZONAS GEOGRÁFICAS",
+                style: TextStyle(
+                  fontWeight: FontWeight.w300, // light
+                  fontStyle: FontStyle.italic, // italic
+                ),
+              ),
               centerTitle: true,
               background: Image(
                 image: AssetImage('assets/images/portada.png'),
@@ -65,11 +70,18 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
       final w = ListTile(
         title: Text(
           element.toUpperCase(),
-          style: TextStyle(fontFamily: 'Verdana'),
+          style: TextStyle(
+            fontWeight: FontWeight.w300, // light
+            fontStyle: FontStyle.italic, // italic
+          ),
           textAlign: TextAlign.center,
         ),
         subtitle: Text(
           'NAVARRA',
+          style: TextStyle(
+            fontWeight: FontWeight.w300, // light
+            fontStyle: FontStyle.italic, // italic
+          ),
           textAlign: TextAlign.center,
         ),
         //leading: Icon(Icons.nature_people),
