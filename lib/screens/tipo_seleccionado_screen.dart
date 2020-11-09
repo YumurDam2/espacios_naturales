@@ -45,12 +45,20 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
 
   List<Widget> _listaZonas(BuildContext context, List<dynamic> data) {
     final List<Widget> lst = [];
+    final tipo = args['descripZona'].toString();
 
     data.forEach((element) {
       final w = ListTile(
-        title: Text(element),
+        title: Text(
+          element.toUpperCase(),
+          style: TextStyle(fontFamily: 'Verdana'),
+          textAlign: TextAlign.center,
+        ),
         // leading: Icon(Icons.eco),
-        subtitle: Text(args['descripZona']),
+        subtitle: Text(
+          tipo.toUpperCase(),
+          textAlign: TextAlign.center,
+        ),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.black45,

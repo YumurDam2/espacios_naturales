@@ -15,12 +15,30 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
     box.write('tipo', null);
     box.write('nombre', null);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Zonas Geográficas"),
-        centerTitle: true,
-        backgroundColor: Colors.lightGreen,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            pinned: true,
+            snap: true,
+            floating: true,
+            expandedHeight: 160,
+            backgroundColor: Colors.purple[300],
+            iconTheme: IconThemeData(color: Colors.purple),
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text("ZONAS GEOGRÁFICAS",
+                  style: TextStyle(fontFamily: 'Verdana')),
+              centerTitle: true,
+              background: Image.asset(
+                'images/unnamed.jpg',
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          SliverFillRemaining(
+            child: _lista(context),
+          )
+        ],
       ),
-      body: _lista(context),
     );
   }
 
@@ -45,8 +63,16 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
 
     data.forEach((element) {
       final w = ListTile(
-        title: Text(element),
-        leading: Icon(Icons.nature_people),
+        title: Text(
+          element.toUpperCase(),
+          style: TextStyle(fontFamily: 'Verdana'),
+          textAlign: TextAlign.center,
+        ),
+        subtitle: Text(
+          'NAVARRA',
+          textAlign: TextAlign.center,
+        ),
+        //leading: Icon(Icons.nature_people),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.black45,

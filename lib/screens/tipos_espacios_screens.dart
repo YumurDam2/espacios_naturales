@@ -16,7 +16,8 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     box.write('nombre', null);
     return Scaffold(
       appBar: AppBar(
-        title: Text("Tipos Espacios Naturales"),
+        title: Text("TIPOS ESPACIOS NATURALES",
+            style: TextStyle(fontFamily: 'Verdana')),
         centerTitle: true,
         backgroundColor: Colors.lightGreen,
       ),
@@ -50,9 +51,16 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
 
     data.forEach((element) {
       final w = ListTile(
-        title: Text(element),
+        title: Text(
+          element.toUpperCase(),
+          style: TextStyle(fontFamily: 'Verdana'),
+          textAlign: TextAlign.center,
+        ),
         // leading: Icon(Icons.nature),
-        subtitle: Text(box.read('descripZona')),
+        subtitle: Text(
+          box.read('descripZona').toUpperCase(),
+          textAlign: TextAlign.center,
+        ),
         trailing: Icon(
           Icons.arrow_right,
           color: Colors.black45,
