@@ -40,7 +40,7 @@ class MenuProvider {
     }
     listaTipos = [];
     listaPuntos.forEach((pr) {
-      if ((zona == pr.descripZona) &&
+      if ((pr.descripZona == zona) &&
           (listaTipos.indexOf(pr.tipo) < 0) &&
           pr.tipo != "") {
         listaTipos.add(pr.tipo);

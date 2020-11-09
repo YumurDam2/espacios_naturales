@@ -1,3 +1,4 @@
+import 'package:espacios_naturales/screens/tipo_seleccionado_screen.dart';
 import 'package:espacios_naturales/screens/tipos_espacios_screens.dart';
 import 'package:espacios_naturales/screens/zonas_geograficas_screen.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,7 @@ class MenuDrawer extends StatelessWidget {
         ),
         Divider(),
         ListTile(
-          leading: Icon(Icons.business, color: Colors.green),
+          leading: Icon(Icons.nature, color: Colors.green),
           title: Text('Zonas Geográficas'),
           onTap: () {
             Get.offAll(ListaZonasGeograficasScreen());
@@ -32,15 +33,24 @@ class MenuDrawer extends StatelessWidget {
         ),
         Divider(),
         ListTile(
-          leading: Icon(Icons.location_city, color: Colors.green),
+          leading: Icon(Icons.eco_outlined, color: Colors.green),
           title: Text('Tipos'),
           onTap: () {
-            if (zona != null) {
+            if ("descripZona" != null) {
               Get.offAll(ListaTiposEspaciosNaturalesScreen());
             }
           },
         ),
         Divider(),
+        ListTile(
+          leading: Icon(Icons.eco_outlined, color: Colors.green),
+          title: Text('Tipo seleccionado'),
+          onTap: () {
+            if ((zona != null) && (tipo != null)) {
+              Get.offAll(ListaTipoEspacioNaturalSeleccionadoScreen());
+            }
+          },
+        ),
       ]),
     );
   }

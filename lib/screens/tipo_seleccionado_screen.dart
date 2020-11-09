@@ -1,4 +1,5 @@
 import 'package:espacios_naturales/screens/tipos_espacios_screens.dart';
+import 'package:espacios_naturales/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
         backgroundColor: Colors.lightGreen,
       ),
       body: _lista(context),
+      drawer: MenuDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.offAll(ListaTiposEspaciosNaturalesScreen(), arguments: args);

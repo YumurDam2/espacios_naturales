@@ -1,9 +1,10 @@
-
 import 'package:espacios_naturales/screens/tipo_seleccionado_screen.dart';
 import 'package:espacios_naturales/screens/zonas_geograficas_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:get/get.dart';
+
+import '../widgets/menu_widget.dart';
 
 class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
@@ -12,11 +13,12 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Zonas Geográficas"),
+        title: Text("Tipos de Espacios Naturales"),
         centerTitle: true,
         backgroundColor: Colors.lightGreen,
       ),
       body: _lista(context),
+      drawer: MenuDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.offAll(ListaZonasGeograficasScreen(), arguments: args);

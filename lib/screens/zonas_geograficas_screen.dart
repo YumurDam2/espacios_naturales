@@ -2,13 +2,18 @@ import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:espacios_naturales/screens/tipos_espacios_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+
+import '../widgets/menu_widget.dart';
 
 class ListaZonasGeograficasScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
-
+  final box = GetStorage();
   @override
   Widget build(BuildContext context) {
+    box.write('descripZona', "descripZona");
     return Scaffold(
+      drawer: MenuDrawer(),
       appBar: AppBar(
         title: Text("Zonas Geográficas"),
         centerTitle: true,
