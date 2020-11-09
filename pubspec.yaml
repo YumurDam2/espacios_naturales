@@ -26,6 +26,9 @@ dependencies:
   splashscreen: ^1.2.0
   get: 
   get_storage:
+  geolocator: ^5.3.1
+  flutter_map:
+  utm: ^0.1.2
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -58,6 +61,7 @@ flutter:
   assets:
     - assets/data/Opendata_Resultados_PN_es.json
     - assets/images/logo_turismo.jpg
+    - assets/images/ubicacion.png
     - assets/images/portada.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
