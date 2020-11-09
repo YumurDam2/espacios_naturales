@@ -15,13 +15,30 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     box.write('tipo', null);
     box.write('nombre', null);
     return Scaffold(
-      appBar: AppBar(
-        title: Text("TIPOS ESPACIOS NATURALES",
-            style: TextStyle(fontFamily: 'Verdana')),
-        centerTitle: true,
-        backgroundColor: Colors.lightGreen,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            pinned: true,
+            snap: true,
+            floating: true,
+            expandedHeight: 160,
+            backgroundColor: Colors.lightGreen,
+            iconTheme: IconThemeData(color: Colors.purple),
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text("TIPOS ESPACIOS NATURALES",
+                  style: TextStyle(fontFamily: 'Verdana')),
+              centerTitle: true,
+              background: Image(
+                image: AssetImage('assets/images/portada.png'),
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          SliverFillRemaining(
+            child: _lista(context),
+          )
+        ],
       ),
-      body: _lista(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.offAll(ListaZonasGeograficasScreen(), arguments: args);

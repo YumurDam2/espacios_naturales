@@ -22,14 +22,14 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
             snap: true,
             floating: true,
             expandedHeight: 160,
-            backgroundColor: Colors.purple[300],
+            backgroundColor: Colors.lightGreen,
             iconTheme: IconThemeData(color: Colors.purple),
             flexibleSpace: FlexibleSpaceBar(
               title: Text("ZONAS GEOGRÁFICAS",
                   style: TextStyle(fontFamily: 'Verdana')),
               centerTitle: true,
-              background: Image.asset(
-                'images/unnamed.jpg',
+              background: Image(
+                image: AssetImage('assets/images/portada.png'),
                 fit: BoxFit.fitWidth,
               ),
             ),

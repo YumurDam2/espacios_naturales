@@ -1,3 +1,4 @@
+import 'package:espacios_naturales/models/espacios_naturales_models.dart';
 import 'package:espacios_naturales/screens/tipos_espacios_screens.dart';
 import 'package:flutter/material.dart';
 import 'package:espacios_naturales/providers/menu_provider.dart';
@@ -10,12 +11,30 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     args = Get.arguments;
     return Scaffold(
-      appBar: AppBar(
-        title: Text(args['tipo']),
-        centerTitle: true,
-        backgroundColor: Colors.lightGreen,
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            pinned: true,
+            snap: true,
+            floating: true,
+            expandedHeight: 160,
+            backgroundColor: Colors.lightGreen,
+            iconTheme: IconThemeData(color: Colors.purple),
+            flexibleSpace: FlexibleSpaceBar(
+              title:
+                  Text(args['tipo'], style: TextStyle(fontFamily: 'Verdana')),
+              centerTitle: true,
+              background: Image(
+                image: AssetImage('assets/images/portada.png'),
+                fit: BoxFit.fitWidth,
+              ),
+            ),
+          ),
+          SliverFillRemaining(
+            child: _lista(context),
+          )
+        ],
       ),
-      body: _lista(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Get.offAll(ListaTiposEspaciosNaturalesScreen(), arguments: args);
@@ -43,14 +62,14 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> _listaZonas(BuildContext context, List<dynamic> data) {
+  List<Widget> _listaZonas(BuildContext context, List<EspaciosNaturales> data) {
     final List<Widget> lst = [];
     final tipo = args['descripZona'].toString();
 
     data.forEach((element) {
       final w = ListTile(
         title: Text(
-          element.toUpperCase(),
+          element.nombre.toUpperCase(),
           style: TextStyle(fontFamily: 'Verdana'),
           textAlign: TextAlign.center,
         ),
@@ -64,7 +83,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
           color: Colors.black45,
         ),
         onTap: () {
-          args['nombre'] = element;
+          args['nombre'] = element.nombre;
           //Get.offAll(, arguments: args);
         },
       );
