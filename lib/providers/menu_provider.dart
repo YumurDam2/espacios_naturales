@@ -6,7 +6,7 @@ import 'package:flutter/services.dart' show rootBundle;
 class MenuProvider {
   List<String> listaAreas = [];
   List<String> listaTipos = [];
-  List<String> listaTipoSeleccionado = [];
+  List<EspaciosNaturales> listaTipoSeleccionado = [];
 
   List<EspaciosNaturales> listaPuntos = [];
 
@@ -49,16 +49,16 @@ class MenuProvider {
     return listaTipos;
   }
 
-  Future<List<String>> cargarTipoSeleccionado(String tipo) async {
+  Future<List<EspaciosNaturales>> cargarTipoSeleccionado(String tipo) async {
     if (listaPuntos.length == 0) {
       await cargarPuntos();
     }
     listaTipoSeleccionado = [];
     listaPuntos.forEach((pr) {
       if ((tipo == pr.tipo) &&
-          (listaTipoSeleccionado.indexOf(pr.nombre) < 0) &&
+          (listaTipoSeleccionado.indexOf(pr) < 0) &&
           pr.nombre != "") {
-        listaTipoSeleccionado.add(pr.nombre);
+        listaTipoSeleccionado.add(pr);
       }
     });
     return listaTipoSeleccionado;
