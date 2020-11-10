@@ -100,8 +100,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
         ),
         onTap: () {
           args['nombre'] = element.nombre;
-          // ignore: missing_required_param
-          Get.offAll(MapaPuntosScreen(), arguments: element);
+          Get.offAll(MapaPuntosScreen(en: element));
         },
       );
       lst.add(w);
