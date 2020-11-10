@@ -8,6 +8,8 @@ import 'package:latlong/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:utm/utm.dart';
 
+import '../providers/menu_provider.dart';
+
 class MapaPuntosScreen extends StatefulWidget {
   final EspaciosNaturales en;
 
@@ -26,7 +28,7 @@ class _MapaPuntosScreenState extends State<MapaPuntosScreen> {
 
   _MapaPuntosScreenState({@required this.en}) {
     latlon = UTM.fromUtm(
-      easting: double.parse(en.georrX),
+      easting: double.parse(menuProvider.cargarCoordenadasX(en.georrX)),
       northing: double.parse(en.georrY),
       zoneNumber: 30,
       zoneLetter: "N",

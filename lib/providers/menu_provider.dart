@@ -9,6 +9,8 @@ class MenuProvider {
   List<EspaciosNaturales> listaTipoSeleccionado = [];
 
   List<EspaciosNaturales> listaPuntos = [];
+  List<String> listaCoordenadasX = [];
+  List<String> listaCoordenadasY = [];
 
   Future<List<EspaciosNaturales>> cargarPuntos() async {
     final data = await rootBundle
@@ -62,6 +64,34 @@ class MenuProvider {
       }
     });
     return listaTipoSeleccionado;
+  }
+  Future<List<String>> cargarCoordenadasX(String x) async {
+    if (listaPuntos.length == 0) {
+      await cargarPuntos();
+    }
+    listaCoordenadasX = [];
+    listaPuntos.forEach((pr) {
+      if ((x == pr.georrX) &&
+          (listaCoordenadasX.indexOf(pr.georrX) < 0)
+         ) {
+        listaCoordenadasX.add(pr.georrX);
+      }
+    });
+    return listaCoordenadasX;
+  }
+  Future<List<String>> cargarCoordenadasY(String y) async {
+    if (listaPuntos.length == 0) {
+      await cargarPuntos();
+    }
+    listaCoordenadasY = [];
+    listaPuntos.forEach((pr) {
+      if ((y == pr.georrY) &&
+          (listaCoordenadasY.indexOf(pr.georrY) < 0)
+         ) {
+        listaCoordenadasY.add(pr.georrY);
+      }
+    });
+    return listaCoordenadasY;
   }
 }
 
