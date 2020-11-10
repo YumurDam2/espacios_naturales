@@ -43,7 +43,6 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
           )
         ],
       ),
-      body: _lista(context),
       drawer: MenuDrawer(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
@@ -101,6 +100,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
         ),
         onTap: () {
           args['nombre'] = element.nombre;
+          // ignore: missing_required_param
           Get.offAll(MapaPuntosScreen(), arguments: element);
         },
       );

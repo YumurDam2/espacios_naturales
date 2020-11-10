@@ -17,13 +17,6 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     box.write('tipo', null);
     box.write('nombre', null);
     return Scaffold(
-
-      appBar: AppBar(
-        title: Text("Tipos de Espacios Naturales"),
-        centerTitle: true,
-        backgroundColor: Colors.lightGreen,
-      ),
-      body: _lista(context),
       drawer: MenuDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
