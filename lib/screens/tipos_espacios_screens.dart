@@ -5,6 +5,8 @@ import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../widgets/menu_widget.dart';
+
 class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
 
@@ -15,6 +17,14 @@ class ListaTiposEspaciosNaturalesScreen extends StatelessWidget {
     box.write('tipo', null);
     box.write('nombre', null);
     return Scaffold(
+
+      appBar: AppBar(
+        title: Text("Tipos de Espacios Naturales"),
+        centerTitle: true,
+        backgroundColor: Colors.lightGreen,
+      ),
+      body: _lista(context),
+      drawer: MenuDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
