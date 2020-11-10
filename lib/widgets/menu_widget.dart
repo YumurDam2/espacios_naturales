@@ -10,20 +10,19 @@ class MenuDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String zona = box.read('zona');
+    String zona = box.read('descripZona');
     String tipo = box.read('tipo');
-    String tipoEspacio = box.read('tipoEspacio');
+    String nombre = box.read('nombre');
     return Drawer(
       child: ListView(padding: EdgeInsets.zero, children: [
         DrawerHeader(
           child: Container(
             decoration: BoxDecoration(
                 image: DecorationImage(
-                    image: AssetImage(''),
+                    image: AssetImage('assets/images/montañas.jpg'),
                     fit: BoxFit.cover)),
           ),
         ),
-        Divider(),
         ListTile(
           leading: Icon(Icons.nature, color: Colors.green),
           title: Text('Zonas Geográficas'),
@@ -36,14 +35,14 @@ class MenuDrawer extends StatelessWidget {
           leading: Icon(Icons.eco_outlined, color: Colors.green),
           title: Text('Tipos'),
           onTap: () {
-            if ("descripZona" != null) {
+            if (zona != null) {
               Get.offAll(ListaTiposEspaciosNaturalesScreen());
             }
           },
         ),
         Divider(),
         ListTile(
-          leading: Icon(Icons.eco_outlined, color: Colors.green),
+          leading: Icon(Icons.eco, color: Colors.green),
           title: Text('Tipo seleccionado'),
           onTap: () {
             if ((zona != null) && (tipo != null)) {

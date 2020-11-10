@@ -9,22 +9,14 @@ class ListaZonasGeograficasScreen extends StatelessWidget {
   final box = GetStorage();
 
   Map<String, Object> args = new Map<String, Object>();
-  final box = GetStorage();
+
   @override
   Widget build(BuildContext context) {
-
-    box.write('descripZona', "descripZona");
-    return Scaffold(
-      drawer: MenuDrawer(),
-      appBar: AppBar(
-        title: Text("Zonas Geográficas"),
-        centerTitle: true,
-        backgroundColor: Colors.lightGreen,
-
     box.write('descripZona', null);
     box.write('tipo', null);
     box.write('nombre', null);
     return Scaffold(
+      drawer: MenuDrawer(),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
