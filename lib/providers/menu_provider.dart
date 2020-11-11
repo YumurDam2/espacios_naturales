@@ -64,21 +64,6 @@ class MenuProvider {
     });
     return listaTipoSeleccionado;
   }
-
-  // Future<List<EspaciosNaturales>> cargarCoordenadas(String nombre) async {
-  //   if (listaPuntos.length == 0) {
-  //     await cargarPuntos();
-  //   }
-  //   listaCoordenadas = [];
-  //   listaPuntos.forEach((pr) {
-  //     if ((nombre == pr.nombre) &&
-  //         (listaCoordenadas.indexOf(pr) < 0) &&
-  //         pr.nombre != "") {
-  //       listaCoordenadas.add(pr);
-  //     }
-  //   });
-  //   return listaCoordenadas;
-  // }
 }
 
 final menuProvider = new MenuProvider();

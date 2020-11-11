@@ -5,14 +5,15 @@ import 'package:espacios_naturales/widgets/menu_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:espacios_naturales/providers/menu_provider.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
   Map<String, Object> args = new Map<String, Object>();
+  final box = GetStorage();
 
   @override
   Widget build(BuildContext context) {
-    args = Get.arguments;
-    String tipo = args['tipo'];
+    args = Get.arguments ?? new Map<String, Object>();
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
@@ -25,7 +26,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
             iconTheme: IconThemeData(color: Colors.purple),
             flexibleSpace: FlexibleSpaceBar(
               title: Text(
-                tipo.toUpperCase(),
+                box.read('tipo').toUpperCase(),
                 style: TextStyle(
                   fontWeight: FontWeight.w300, // light
                   fontStyle: FontStyle.italic, // italic
@@ -55,9 +56,10 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
   }
 
   Widget _lista(BuildContext context) {
-    args = Get.arguments;
+    args = Get.arguments ?? new Map<String, Object>();
     return FutureBuilder(
-      future: menuProvider.cargarTipoSeleccionado(args['tipo']),
+      future:
+          menuProvider.cargarTipoSeleccionado(box.read('tipo') ?? args['tipo']),
       initialData: [],
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
@@ -73,7 +75,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
 
   List<Widget> _listaZonas(BuildContext context, List<EspaciosNaturales> data) {
     final List<Widget> lst = [];
-    final tipo = args['descripZona'].toString();
+    args = Get.arguments ?? new Map<String, Object>();
 
     data.forEach((element) {
       final w = ListTile(
@@ -87,7 +89,7 @@ class ListaTipoEspacioNaturalSeleccionadoScreen extends StatelessWidget {
         ),
         // leading: Icon(Icons.eco),
         subtitle: Text(
-          tipo.toUpperCase(),
+          element.nombreLocalidad.toUpperCase(),
           textAlign: TextAlign.center,
           style: TextStyle(
             fontWeight: FontWeight.w300, // light

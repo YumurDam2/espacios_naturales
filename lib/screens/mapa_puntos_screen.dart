@@ -8,6 +8,8 @@ import 'package:latlong/latlong.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:utm/utm.dart';
 
+import '../providers/menu_provider.dart';
+
 class MapaPuntosScreen extends StatefulWidget {
   final EspaciosNaturales en;
 
