@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     String tipo = box.read('tipo');
     String nombre = box.read('nombre');
 
-    return GetMaterialApp(home: PresentacionScreen());
+    return GetMaterialApp(home: PresentacionScreen(),
+          debugShowCheckedModeBanner: false);
   }
 }
