@@ -28,7 +28,7 @@ class _MapaPuntosScreenState extends State<MapaPuntosScreen> {
 
   _MapaPuntosScreenState({@required this.en}) {
     latlon = UTM.fromUtm(
-      easting: double.parse(menuProvider.cargarCoordenadasX(en.georrX)),
+      easting: double.parse(en.georrX),
       northing: double.parse(en.georrY),
       zoneNumber: 30,
       zoneLetter: "N",

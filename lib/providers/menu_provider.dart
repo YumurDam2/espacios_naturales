@@ -10,8 +10,6 @@ class MenuProvider {
   // List<EspaciosNaturales> listaCoordenadas = [];
 
   List<EspaciosNaturales> listaPuntos = [];
-  List<String> listaCoordenadasX = [];
-  List<String> listaCoordenadasY = [];
 
   Future<List<EspaciosNaturales>> cargarPuntos() async {
     final data = await rootBundle

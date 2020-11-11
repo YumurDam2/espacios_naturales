@@ -32,7 +32,7 @@ class MenuDrawer extends StatelessWidget {
         ),
         Divider(),
         ListTile(
-          leading: Icon(Icons.access_alarm ,color: Colors.green),
+          leading: Icon(Icons.eco_outlined, color: Colors.green),
           title: Text('Tipos'),
           onTap: () {
             if (zona != null) {
@@ -42,7 +42,7 @@ class MenuDrawer extends StatelessWidget {
         ),
         Divider(),
         ListTile(
-          leading: Icon(Icons.access_alarm, color: Colors.green),
+          leading: Icon(Icons.eco, color: Colors.green),
           title: Text('Tipo seleccionado'),
           onTap: () {
             if ((zona != null) && (tipo != null)) {
